@@ -2,7 +2,12 @@
   "name": "@pet-market/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:pet-market": "nx build @pet-market/pet-market",
+    "start": "nx serve pet-market",
+    "prisma:generate": "prisma generate",
+    "prisma:seed": "prisma db seed"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~19.2.0",
