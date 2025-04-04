@@ -10,7 +10,7 @@ import { ProductsModule } from './products/products.module';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'generated/schema.gql'), // Place the schema file in a 'generated' directory
+      autoSchemaFile: join(process.cwd(), 'dist/schema.gql'), // Place the schema file in a 'generated' directory
       playground: true,
     }),
     ProductsModule,
