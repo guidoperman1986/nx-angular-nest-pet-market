@@ -5,6 +5,7 @@ import { ProductStore } from '../stores/products.store';
 import { FormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 import untilDestroyed from '../utils/untilDestroyed';
+import { CartStore } from '../stores/cart.store';
 
 @Component({
   selector: 'app-products',
@@ -17,15 +18,21 @@ export class ProductsComponent {
   searchTerm = '';
   searchSubject = new Subject<string>();
   untilDestoyed = untilDestroyed();
+  cartStore = inject(CartStore);
 
   constructor() {
     this.productStore.loadProducts();
 
     afterNextRender(() => {
-      this.searchSubject.pipe(debounceTime(500), distinctUntilChanged(), this.untilDestoyed()).subscribe((searchTerm) => {
+      this.searchSubject
+        .pipe(
+          debounceTime(500),
+          distinctUntilChanged(),
+          this.untilDestoyed()
+        ).subscribe((searchTerm) => {
 
-        this.productStore.searchProducts(searchTerm);
-      });
+          this.productStore.searchProducts(searchTerm);
+        });
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input, OnInit, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from "@prisma/client";
 
@@ -10,11 +10,13 @@ import { Product } from "@prisma/client";
 })
 export class ProductCardComponent implements OnInit {
   product = input<Product>();
+  addToCart = output<Product>()
 
   ngOnInit(): void {
-    console.log(this.product());
+    /* console.log(this.product()); */
   }
 
-  onAddToCart(arg0: unknown) {
+  onAddToCart(product: Product) {
+    this.addToCart.emit(product);
   }
 }
