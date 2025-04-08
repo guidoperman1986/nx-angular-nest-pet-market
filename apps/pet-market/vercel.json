@@ -1,0 +1,24 @@
+{
+    "version": 2,
+    "build": {
+        "src": "dist/main.js",
+        "use": "@vercel/node",
+        "routes": [
+            {
+                "src": "/(.*)",
+                "dest": "/dist/main.js"
+            }
+        ]
+    },
+    "routes": [
+        {
+            "src": "/graphql",
+            "dest": "/dist/main.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/dist/main.js"
+        }
+    ],
+    "env": {}
+}
