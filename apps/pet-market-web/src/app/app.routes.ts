@@ -7,6 +7,10 @@ export const appRoutes: Route[] = [
         loadComponent: () => import('./products/products.component.js').then(c => c.ProductsComponent)
     },
     {
+        path: 'cart',
+        loadComponent: () => import('./cart/cart.component.js').then(c => c.CartComponent)
+    },
+    {
         path: '**',
         redirectTo: 'products'
     }
